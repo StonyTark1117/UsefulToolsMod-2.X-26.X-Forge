@@ -95,29 +95,69 @@ These stay in `sourceSets.main.java { exclude … }` in `build.gradle`:
 - `compat/jei/**` — no Forge JEI / REI / EMI for 26.1.x.
 - `compat/jer/**` — no Forge JER for 26.1.
 
-`compat/wthit/**` and `client/UsefulToolsConfigScreen.java` /
-`client/ClientConfigRegistration.java` are kept in the source set — WTHIT
-ships a Forge 26.1.x build (see above), and the config screen has been
-rewritten to depend only on vanilla MC + Forge's built-in
-`ConfigScreenHandler`.
+`compat/wthit/**`, `client/UsefulToolsConfigScreen.java` /
+`client/ClientConfigRegistration.java`, and `datagen/**` are all kept in
+the source set — WTHIT ships a Forge 26.1.x build (see above), the config
+screen has been rewritten to depend only on vanilla MC + Forge's built-in
+`ConfigScreenHandler`, and the datagen providers were re-ported against
+Forge's ctor signatures (see below).
 
 If JEI or JER ships a Forge 26.1.x release, set the version property in
 `gradle.properties` (`PLACEHOLDER_FORGE_26_1` placeholders), add the
 dependency in `build.gradle`, un-comment the matching `mods.toml` block,
 and drop the entry from `sourceSets.main.java { exclude … }`.
 
-## Datagen excluded
+## Datagen re-ported
 
-`com/stonytark/usefultoolsmod/datagen/**` is excluded from `compileJava`.
-Forge 26.1.2's `ModelProvider`, `BlockTagsProvider`, and `LootTableProvider`
-constructors diverged from the NeoForge versions the providers were written
-against. The 2,920 already-generated files under `src/generated/resources/`
-(blockstates, models, recipes, advancements, loot tables, tags, worldgen,
-biome modifiers) cover everything those providers produced for the NeoForge
-build, so the runtime has the data it needs and the jar bundles it.
-Re-port the provider classes (constructor signatures, `getKnownBlocks` /
-`getKnownItems` overrides, the new `ItemModelGenerators` / `BlockModelGenerators`
-helpers) when datagen edits are needed again.
+`datagen/**` is back in the source set. Each provider was rewritten against
+Forge 26.1.2's ctor signatures:
+
+- **`DataGenerators`** — single `@SubscribeEvent onGatherData(GatherDataEvent)`
+  with `event.includeClient()` / `event.includeServer()` gating each provider.
+  Forge 26.1.x didn't split `GatherDataEvent` into client/server records the
+  way NeoForge did.
+- **`ModBlockStateProvider`** — extends vanilla `ModelProvider`; ctor is
+  `(PackOutput, ExistingFileHelper)` calling `super(output)` (no modid arg).
+  `getKnownBlocks()` returns `Stream<Block>` (not `Stream<Holder<Block>>`)
+  and filters by mod namespace, excluding `SPECTRAL_INFUSER` (hand-written
+  blockstate). `getBlockModelGenerators(...)` is overridden to call
+  `gen.createTrivialCube(block)` for each mod block.
+- **`ModItemModelProvider`** — same `ModelProvider` ctor pattern;
+  `getKnownItems()` filters by namespace; `getItemModelGenerators(...)`
+  iterates `ModItems.ITEMS.getEntries()` and calls
+  `gen.generateFlatItem(item, template)` (or
+  `gen.declareCustomModelItem(item)` for `grenade` / `dynamite`).
+- **`ModBlockTagProvider`** / **`ModItemTagProvider`** — Forge ctors take
+  an extra `ExistingFileHelper` parameter; `ModItemTagProvider`'s
+  6-arg `IntrinsicHolderTagsProvider` ctor took the
+  `(packOutput, Registries.ITEM, lookupProvider, holderFn, modid, existingFileHelper)`
+  signature.
+- **`ModAdvancementProvider`** — extends Forge's `ForgeAdvancementProvider`;
+  ctor accepts `ExistingFileHelper` for signature consistency even though
+  the providers don't use it internally.
+
+Three vanilla methods are widened from `protected` to `public` via
+`src/main/resources/META-INF/accesstransformer.cfg` so the providers can
+call them across packages:
+
+- `BlockModelGenerators#createTrivialCube`
+- `ItemModelGenerators#generateFlatItem`
+- `ItemModelGenerators#declareCustomModelItem`
+
+The AT is loaded via `minecraft.useDefaultAccessTransformer()` in
+`build.gradle` (ForgeGradle 7.0.25 dropped the old
+`accessTransformer = file(...)` setter the docs still show; the default
+path is `META-INF/accesstransformer.cfg`).
+
+The pre-existing `src/generated/resources/{client,server}/` outputs from
+the NeoForge port are still wired into the source set and load at
+runtime — the re-ported providers regenerate the same content into a
+unified `src/generated/resources/` tree when `./gradlew runData` is
+invoked. Asset download is slow on first run (slime-launcher fetches
+every vanilla asset before `GatherDataEvent` fires); subsequent runs
+reuse the cache.
+
+`compileJava` succeeds with the datagen sources in the build.
 
 ## Forge-specific changes vs. the NeoForge port
 
@@ -237,8 +277,10 @@ vanilla's `MenuScreens.register` inside `FMLClientSetupEvent#enqueueWork`.
 
 Forge keeps the single `GatherDataEvent` with `includeClient()` /
 `includeServer()` flags. NeoForge's split `GatherDataEvent.Client` /
-`GatherDataEvent.Server` records don't exist. (`datagen/**` is excluded
-from compile anyway — documented above.)
+`GatherDataEvent.Server` records don't exist. `DataGenerators` registers
+every provider against the unified event and gates each one on the
+matching include flag. (See *Datagen re-ported* above for the full
+provider-by-provider delta.)
 
 ### `mods.toml` format
 
@@ -291,16 +333,15 @@ source of truth for those:
 
 ## Suggested next steps
 
-1. **Datagen** — re-port the provider classes against Forge 26.1's
-   `ModelProvider` / `BlockTagsProvider` / `BlockModelGenerators` /
-   `ItemModelGenerators` signatures and remove the
-   `datagen/**` exclusion in `build.gradle`. Until then any recipe or
-   blockstate edits have to be made by hand in `src/generated/resources/`.
-2. **Integration deps** — watch the JEI, WTHIT, Cloth Config, and JER
+1. **Integration deps** — watch the JEI, REI, EMI, Cloth Config, and JER
    mavens for Forge 26.1.x builds. Each integration is one un-exclude in
    `build.gradle` + one dep version property + one `mods.toml` uncomment.
-3. **Player playtest** — runServer is clean; runClient hasn't been booted
-   here (no GL on this box). The ported code paths cover everything the
+2. **Player playtest** — runServer is clean; runClient hasn't been booted
+   here per user direction. The ported code paths cover everything the
    NeoForge build runs, but a real client playtest would catch any
    GhostModel / SpectralInfuserScreen issues that only surface at render
    time.
+3. **First-time `runData`** — fetches every vanilla asset before
+   `GatherDataEvent` fires (slime-launcher behavior, not a mod issue), so
+   plan for the first run to take ~10+ minutes on a cold cache.
+   Subsequent runs are fast.

@@ -2,8 +2,6 @@ package com.stonytark.usefultoolsmod.datagen;
 
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
@@ -52,13 +50,17 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(),
                 new ModRecipeProvider.Runner(packOutput, lookupProvider));
 
-        ModBlockTagProvider blockTags = new ModBlockTagProvider(packOutput, lookupProvider, existingFileHelper);
-        generator.addProvider(event.includeServer(), blockTags);
+        // Block and item tag providers — Forge's ctors take ExistingFileHelper. The
+        // item-tag generator doesn't actually copy entries from the block-tag set in this
+        // mod, so we don't have to thread the block-tag lookup through.
         generator.addProvider(event.includeServer(),
-                new ModItemTagProvider(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
+                new ModBlockTagProvider(packOutput, lookupProvider, existingFileHelper));
+        generator.addProvider(event.includeServer(),
+                new ModItemTagProvider(packOutput, lookupProvider, existingFileHelper));
 
         generator.addProvider(event.includeServer(),
-                new DatapackBuiltinEntriesProvider(packOutput, lookupProvider, ModDatapackEntries.BUILDER, Set.of(UsefultoolsMod.MOD_ID)));
+                new DatapackBuiltinEntriesProvider(packOutput, lookupProvider,
+                        ModDatapackEntries.BUILDER, Set.of(UsefultoolsMod.MOD_ID)));
 
         generator.addProvider(event.includeServer(),
                 new ModAdvancementProvider(packOutput, lookupProvider, existingFileHelper));

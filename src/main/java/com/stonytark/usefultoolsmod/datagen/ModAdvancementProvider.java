@@ -33,8 +33,12 @@ import java.util.function.Consumer;
 
 public class ModAdvancementProvider extends AdvancementProvider {
 
+    /** {@code existingFileHelper} is part of Forge's standard provider signature for
+     *  tooling that needs to verify referenced assets exist. We don't use it inside the
+     *  generator, but DataGenerators passes it for consistency with the other providers. */
     public ModAdvancementProvider(PackOutput output,
-                                   CompletableFuture<HolderLookup.Provider> lookupProvider) {
+                                   CompletableFuture<HolderLookup.Provider> lookupProvider,
+                                   net.minecraftforge.common.data.ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, List.of(new UsefulToolsAdvancements()));
     }
 

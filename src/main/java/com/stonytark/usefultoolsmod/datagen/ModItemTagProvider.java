@@ -14,25 +14,24 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
 /**
- * Item tag provider. 26.1 dropped the NeoForge {@code ItemTagsProvider} that took an
- * {@code ExistingFileHelper} plus a block-tag lookup; we extend the vanilla
- * {@link IntrinsicHolderTagsProvider} directly. The {@code TagLookup<Block>} parameter is
- * passed in so item tags can copy entries from sibling block tags (delivered via
- * {@code GatherDataEvent#createBlockAndItemTags}).
+ * Item tag provider — extends vanilla {@link IntrinsicHolderTagsProvider} with Forge's
+ * 6-arg constructor (output, registry, lookupProvider, keyExtractor, modid,
+ * existingFileHelper). The NeoForge 5-arg form (no ExistingFileHelper) doesn't exist on
+ * Forge 26.1.2.
  */
 public class ModItemTagProvider extends IntrinsicHolderTagsProvider<Item> {
     public ModItemTagProvider(PackOutput packOutput,
                               CompletableFuture<HolderLookup.Provider> lookupProvider,
-                              CompletableFuture<TagsProvider.TagLookup<Block>> blockTagLookup) {
+                              ExistingFileHelper existingFileHelper) {
         super(packOutput, Registries.ITEM, lookupProvider,
                 item -> BuiltInRegistries.ITEM.getResourceKey(item).orElseThrow(),
-                UsefultoolsMod.MOD_ID);
-        // blockTagLookup is unused; this mod doesn't copy block tags into item tags. The
-        // signature still accepts it so GatherDataEvent#createBlockAndItemTags can hand it in.
+                UsefultoolsMod.MOD_ID,
+                existingFileHelper);
     }
 
 

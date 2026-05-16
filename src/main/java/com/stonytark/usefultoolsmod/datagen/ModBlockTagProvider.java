@@ -8,12 +8,17 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.BlockTagsProvider;
+import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
 public class ModBlockTagProvider extends BlockTagsProvider {
-    public ModBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, lookupProvider, UsefultoolsMod.MOD_ID);
+    public ModBlockTagProvider(PackOutput output,
+                               CompletableFuture<HolderLookup.Provider> lookupProvider,
+                               ExistingFileHelper existingFileHelper) {
+        // Forge's BlockTagsProvider ctor takes ExistingFileHelper; the NeoForge
+        // 3-arg form (output, lookupProvider, modid) doesn't exist here.
+        super(output, lookupProvider, UsefultoolsMod.MOD_ID, existingFileHelper);
     }
 
     @Override

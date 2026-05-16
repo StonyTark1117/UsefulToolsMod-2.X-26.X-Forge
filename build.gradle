@@ -30,25 +30,32 @@ sourceSets.main.resources {
 //                              No REI/EMI Forge 26.1 build exists either (verified on
 //                              Modrinth 2026-05-16: neither has any 26.x release).
 //   - compat/jer/**          - JER has no 26.1 build on Modrinth.
-//   - datagen/**             - Forge 26.1 ModelProvider / BlockTagsProvider constructor
-//                              signatures diverged from the NeoForge version the port
-//                              started from. The generated resources under
-//                              src/generated/resources/ (~2900 files) cover everything
-//                              datagen produced for the NeoForge build, so the runtime
-//                              has the data it needs. Re-port the providers when datagen
-//                              is needed again (recipe / blockstate edits).
 //
-// compat/wthit/** and client/UsefulToolsConfigScreen.java stay in the source
-// set. WTHIT 19.0.1 ships a Forge 26.1.x jar. The config screen was
-// re-built against vanilla MC widgets + Forge's ConfigScreenHandler
-// extension point (no Cloth Config dependency required).
+// compat/wthit/**, client/UsefulToolsConfigScreen.java, and datagen/** are all
+// in the source set:
+//   - WTHIT 19.0.1 ships a Forge 26.1.x jar.
+//   - The config screen was re-built against vanilla MC widgets + Forge's
+//     ConfigScreenHandler extension point (no Cloth Config dependency).
+//   - Datagen providers re-ported against Forge's BlockTagsProvider /
+//     IntrinsicHolderTagsProvider / ModelProvider / ForgeAdvancementProvider
+//     ctor signatures. The two protected helpers we need
+//     (BlockModelGenerators#createTrivialCube and
+//     ItemModelGenerators#generateFlatItem / declareCustomModelItem) are
+//     widened to public via src/main/resources/META-INF/accesstransformer.cfg.
 sourceSets.main.java {
     exclude 'com/stonytark/usefultoolsmod/compat/jei/**'
     exclude 'com/stonytark/usefultoolsmod/compat/jer/**'
-    exclude 'com/stonytark/usefultoolsmod/datagen/**'
 }
 
 minecraft {
+    // ATs needed so datagen can call BlockModelGenerators#createTrivialCube and
+    // ItemModelGenerators#generateFlatItem/declareCustomModelItem from a different
+    // package. The file lives at the default location
+    // (src/main/resources/META-INF/accesstransformer.cfg) so the one-line helper
+    // suffices; ForgeGradle 7.0.25 dropped the old `accessTransformer = file(...)`
+    // setter the docs still show.
+    useDefaultAccessTransformer()
+
     runs {
         configureEach {
             workingDir = layout.projectDirectory.dir('run')
@@ -72,20 +79,16 @@ minecraft {
 
         register('gameTestServer')
 
-        // Two datagen runs targeting their own subdirs so the per-task HashCache doesn't
-        // wipe the other's outputs as "stale" on the next run. Both subdirs are wired
-        // into the main resource set above.
-        register('clientData') {
+        // Single datagen run. Forge 26.1.x doesn't split GatherDataEvent into client /
+        // server like NeoForge does — providers gate themselves on
+        // includeClient()/includeServer() inside DataGenerators. Output goes into a
+        // unified src/generated/resources/ tree; the per-loader subdirs the NeoForge
+        // port used (src/generated/resources/{client,server}/) are still wired into
+        // the source set above so the existing files keep loading at runtime.
+        register('data') {
             workingDir = layout.projectDirectory.dir('run-data')
             args '--mod', mod_id, '--all',
-                 '--output', layout.projectDirectory.dir('src/generated/resources/client'),
-                 '--existing', layout.projectDirectory.dir('src/main/resources')
-        }
-
-        register('serverData') {
-            workingDir = layout.projectDirectory.dir('run-data')
-            args '--mod', mod_id, '--all',
-                 '--output', layout.projectDirectory.dir('src/generated/resources/server'),
+                 '--output', layout.projectDirectory.dir('src/generated/resources'),
                  '--existing', layout.projectDirectory.dir('src/main/resources')
         }
     }
