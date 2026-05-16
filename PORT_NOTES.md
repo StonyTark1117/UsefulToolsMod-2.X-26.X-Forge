@@ -30,26 +30,58 @@ Once Java 25 is the system default this can be dropped — the toolchain
 spec at `java.toolchain.languageVersion = 25` still drives the mod's own
 compilation.
 
-## Why several integrations are deferred
+## Integration deps audit (2026-05-16)
 
-Compat sources are excluded from `compileJava` in `build.gradle` because the
-upstream projects have not published a Forge 26.1.x build (verified
-2026-05-15 on each project's maven):
+Checked every viable Forge 26.1.x build across the alternatives I'm aware of.
+Result: **WTHIT is the only one with a working Forge 26.1.x release** — the
+recipe-viewer ecosystem (JEI / REI / EMI) is NeoForge-only for 26.1.x, and
+Cloth Config / JER haven't shipped post-1.21 Forge builds either.
 
-- **JEI** — 26.1.2 ships only `fabric` and `neoforge` variants on
-  `maven.blamejared.com`; no `forge` artifact.
-- **WTHIT** — latest tagged `forge-19.0.1` (2026-04-05) predates Forge
-  26.1.2 itself (2026-05-04) and targets pre-26.1 Forge.
-- **Cloth Config** — last `cloth-config-forge` is `17.0.144` (Dec 2024,
-  MC 1.21.x); no 26.1 build exists. Both `client/UsefulToolsConfigScreen` and
-  `client/ClientConfigRegistration` are excluded.
-- **Just Enough Resources** — no 26.1 build on Modrinth (latest is `1.9.0.31`
-  for MC 1.21.11). `compat/jer/**` excluded.
+### Wired up
 
-When any of these ship a Forge 26.1.x release, set the version property in
-`gradle.properties` (currently `PLACEHOLDER_FORGE_26_1`), re-add the
-dependency in `build.gradle`, and remove the matching exclusion from
-`sourceSets.main.java { exclude … }`.
+- **WTHIT 19.0.1** — `mcp.mobius.waila:wthit:forge-19.0.1` on
+  `maven4.bai.lol`. The version tag (`forge-19.0.1`) refers to WTHIT's own
+  release line, not the MC version — the actual published jar is
+  `wthit-26.1-forge-19.0.1.jar` and the Modrinth metadata confirms it
+  targets MC 26.1 / 26.1.1 / 26.1.2. Pulls in BadPackets `0.12.2`
+  (`lol.bai:badpackets:forge-0.12.2`) at runtime. The `compat/wthit/**`
+  sources compile against `wthit-api:forge-19.0.1` unchanged from the
+  NeoForge port; only the maven coordinate changed.
+
+### Confirmed unavailable for Forge 26.1.x
+
+| Mod | Status | Where checked |
+|---|---|---|
+| **JEI** | Fabric + NeoForge only for 26.1.2 (latest `29.5.0.28`) | `maven.blamejared.com/mezz/jei/`, CurseForge files |
+| **REI** (Roughly Enough Items) | No 26.x release on any loader (latest is `21.11.814` for MC 1.21.11) | Modrinth API |
+| **EMI** | No 26.x release on any loader (latest Forge is `1.1.24+1.20.1+forge`) | Modrinth API |
+| **Jade** | 26.1.x builds exist but NeoForge + Fabric only (latest `26.1.1+neoforge`) | Modrinth API |
+| **The One Probe** | No 26.x release on any loader (latest is `1.21_neo-12.0.8` NeoForge for 1.21.1) | Modrinth API |
+| **WAILA / HWYLA** | No 26.x release | Modrinth API |
+| **Cloth Config** | Last `cloth-config-forge` is `17.0.144` (Dec 2024, MC 1.21) | `maven.shedaniel.me` |
+| **AppleSkin** | 26.1.x exists but Fabric only | Modrinth API |
+| **JER** | No 26.1 build on Modrinth (latest `1.9.0.31` for MC 1.21.11) | Modrinth API |
+
+Practical read of the table: the Forge 26.1.x mod ecosystem is thin because
+most maintainers moved to NeoForge after the 1.20.5 split. Forge 26.1.2 was
+only published 2026-05-04, so the few mods that *do* still ship Forge builds
+(WTHIT, BadPackets, Mouse Tweaks) had to be looked up individually — the
+"all popular tooltip mods have Forge support" intuition from 1.20.1 doesn't
+carry over.
+
+### Excluded sources (per project)
+
+These stay in `sourceSets.main.java { exclude … }` in `build.gradle`:
+
+- `compat/jei/**` — no Forge JEI / REI / EMI for 26.1.x.
+- `compat/jer/**` — no Forge JER for 26.1.
+- `client/UsefulToolsConfigScreen.java` and
+  `client/ClientConfigRegistration.java` — no Forge Cloth Config for 26.1.
+
+If any of those ship a Forge 26.1.x release, set the version property in
+`gradle.properties` (`PLACEHOLDER_FORGE_26_1` placeholders), add the
+dependency in `build.gradle`, un-comment the matching `mods.toml` block,
+and drop the entry from `sourceSets.main.java { exclude … }`.
 
 ## Datagen excluded
 

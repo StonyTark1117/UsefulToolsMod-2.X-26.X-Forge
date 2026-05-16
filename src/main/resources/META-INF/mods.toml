@@ -36,13 +36,13 @@ description='''${mod_description}'''
 #     ordering="AFTER"
 #     side="CLIENT"
 
-# Optional integration: WTHIT - no Forge 26.1.2 build published upstream as of 2026-05-15.
-# [[dependencies.${mod_id}]]
-#     modId="waila"
-#     type="optional"
-#     versionRange="[19.0.0,)"
-#     ordering="AFTER"
-#     side="BOTH"
+# Optional integration: WTHIT 19.0.x for Forge 26.1.x (mod id is "waila").
+[[dependencies.${mod_id}]]
+    modId="waila"
+    mandatory=false
+    versionRange="[19.0.0,)"
+    ordering="AFTER"
+    side="BOTH"
 
 # Optional integration: Cloth Config - last Forge build was 17.0.144 for MC 1.21.x.
 # [[dependencies.${mod_id}]]

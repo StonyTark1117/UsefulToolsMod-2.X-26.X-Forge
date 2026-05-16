@@ -27,7 +27,8 @@ sourceSets.main.resources {
 
 // Sources excluded from compile:
 //   - compat/jei/**          - JEI 26.1.2 only publishes fabric/neoforge variants.
-//   - compat/wthit/**        - WTHIT latest forge-19.0.1 predates Forge 26.1.x.
+//                              No REI/EMI Forge 26.1 build exists either (verified on
+//                              Modrinth 2026-05-16: neither has any 26.x release).
 //   - compat/jer/**          - JER has no 26.1 build on Modrinth.
 //   - client/UsefulToolsConfigScreen.java
 //   - client/ClientConfigRegistration.java
@@ -39,9 +40,11 @@ sourceSets.main.resources {
 //                              datagen produced for the NeoForge build, so the runtime
 //                              has the data it needs. Re-port the providers when datagen
 //                              is needed again (recipe / blockstate edits).
+//
+// compat/wthit/** stays in the source set — WTHIT 19.0.1 ships a Forge 26.1.x
+// jar (wthit-26.1-forge-19.0.1.jar) so its compat sources compile and load.
 sourceSets.main.java {
     exclude 'com/stonytark/usefultoolsmod/compat/jei/**'
-    exclude 'com/stonytark/usefultoolsmod/compat/wthit/**'
     exclude 'com/stonytark/usefultoolsmod/compat/jer/**'
     exclude 'com/stonytark/usefultoolsmod/client/UsefulToolsConfigScreen.java'
     exclude 'com/stonytark/usefultoolsmod/client/ClientConfigRegistration.java'
@@ -96,16 +99,33 @@ repositories {
     maven fg.forgeMaven
     maven fg.minecraftLibsMaven
     mavenCentral()
+
+    // WTHIT + BadPackets
+    maven {
+        name = "bai's maven"
+        url = "https://maven4.bai.lol"
+        content {
+            includeGroup "lol.bai"
+            includeGroup "mcp.mobius.waila"
+        }
+    }
 }
 
 dependencies {
     implementation minecraft.dependency("net.minecraftforge:forge:${forge_version}")
     annotationProcessor 'net.minecraftforge:eventbus-validator:7.0.1'
 
-    // Integration deps (JEI / WTHIT / Cloth Config / JER) are intentionally omitted -
-    // see gradle.properties for the per-dep rationale. The compat/ sources stay
-    // excluded from compileJava in sourceSets above until the upstream projects publish
-    // Forge 26.1.x builds.
+    // WTHIT — compile against API only, full jar at runtime. Verified maven layout:
+    //   https://maven4.bai.lol/mcp/mobius/waila/wthit/
+    //   https://maven4.bai.lol/lol/bai/badpackets/
+    compileOnly "mcp.mobius.waila:wthit-api:forge-${wthit_version}"
+    runtimeOnly "mcp.mobius.waila:wthit:forge-${wthit_version}"
+    runtimeOnly "lol.bai:badpackets:forge-${badpackets_version}"
+
+    // JEI, Cloth Config, JER intentionally omitted — no Forge 26.1.x builds shipped
+    // upstream as of 2026-05-16. JEI's NeoForge-only stance and Cloth Config's
+    // post-1.21 Forge silence look durable; revisit if either project resumes Forge
+    // releases.
 }
 
 // Expand mod metadata properties into mods.toml and pack.mcmeta at build time.
