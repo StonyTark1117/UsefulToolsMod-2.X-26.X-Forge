@@ -48,6 +48,25 @@ Cloth Config / JER haven't shipped post-1.21 Forge builds either.
   sources compile against `wthit-api:forge-19.0.1` unchanged from the
   NeoForge port; only the maven coordinate changed.
 
+- **In-game config screen** — Cloth Config still has no Forge 26.1.x
+  build, but Forge 26.1.2 ships its own
+  `net.minecraftforge.client.ConfigScreenHandler.ConfigScreenFactory`
+  extension point that accepts a plain {@link
+  net.minecraft.client.gui.screens.Screen}. So `UsefulToolsConfigScreen`
+  was rewritten against vanilla MC widgets (`Screen` +
+  `ContainerObjectSelectionList<RowEntry>` of `Checkbox` and `EditBox`
+  rows, with `StringWidget` headers between categories) and registered
+  via `container.registerExtensionPoint(...)` in
+  `ClientConfigRegistration`. The "Config" button on the mods-list page
+  in the title screen / pause menu now opens the editor without needing
+  Cloth Config or any other dependency. Booleans toggle inline; integer
+  / long / double values parse on commit via `EditBox#setResponder`.
+  Edits are staged in a `pendingWrites` list and only flushed via
+  `ForgeConfigSpec#save()` when the user clicks **Done** — **Cancel**
+  drops the staged writes. The screen is gated client-side in
+  `UsefultoolsMod` so the dedicated server doesn't classload the
+  client-only `Screen` reference chain.
+
 ### Confirmed unavailable for Forge 26.1.x
 
 | Mod | Status | Where checked |
@@ -58,7 +77,7 @@ Cloth Config / JER haven't shipped post-1.21 Forge builds either.
 | **Jade** | 26.1.x builds exist but NeoForge + Fabric only (latest `26.1.1+neoforge`) | Modrinth API |
 | **The One Probe** | No 26.x release on any loader (latest is `1.21_neo-12.0.8` NeoForge for 1.21.1) | Modrinth API |
 | **WAILA / HWYLA** | No 26.x release | Modrinth API |
-| **Cloth Config** | Last `cloth-config-forge` is `17.0.144` (Dec 2024, MC 1.21) | `maven.shedaniel.me` |
+| **Cloth Config** | Last `cloth-config-forge` is `17.0.144` (Dec 2024, MC 1.21). Replaced with a vanilla-only config screen via Forge's `ConfigScreenHandler.ConfigScreenFactory` — see above. | `maven.shedaniel.me` |
 | **AppleSkin** | 26.1.x exists but Fabric only | Modrinth API |
 | **JER** | No 26.1 build on Modrinth (latest `1.9.0.31` for MC 1.21.11) | Modrinth API |
 
@@ -75,10 +94,14 @@ These stay in `sourceSets.main.java { exclude … }` in `build.gradle`:
 
 - `compat/jei/**` — no Forge JEI / REI / EMI for 26.1.x.
 - `compat/jer/**` — no Forge JER for 26.1.
-- `client/UsefulToolsConfigScreen.java` and
-  `client/ClientConfigRegistration.java` — no Forge Cloth Config for 26.1.
 
-If any of those ship a Forge 26.1.x release, set the version property in
+`compat/wthit/**` and `client/UsefulToolsConfigScreen.java` /
+`client/ClientConfigRegistration.java` are kept in the source set — WTHIT
+ships a Forge 26.1.x build (see above), and the config screen has been
+rewritten to depend only on vanilla MC + Forge's built-in
+`ConfigScreenHandler`.
+
+If JEI or JER ships a Forge 26.1.x release, set the version property in
 `gradle.properties` (`PLACEHOLDER_FORGE_26_1` placeholders), add the
 dependency in `build.gradle`, un-comment the matching `mods.toml` block,
 and drop the entry from `sourceSets.main.java { exclude … }`.

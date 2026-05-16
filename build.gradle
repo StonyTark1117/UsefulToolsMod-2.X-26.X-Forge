@@ -30,9 +30,6 @@ sourceSets.main.resources {
 //                              No REI/EMI Forge 26.1 build exists either (verified on
 //                              Modrinth 2026-05-16: neither has any 26.x release).
 //   - compat/jer/**          - JER has no 26.1 build on Modrinth.
-//   - client/UsefulToolsConfigScreen.java
-//   - client/ClientConfigRegistration.java
-//                            - Cloth Config last forge build was 17.0.144 (MC 1.21).
 //   - datagen/**             - Forge 26.1 ModelProvider / BlockTagsProvider constructor
 //                              signatures diverged from the NeoForge version the port
 //                              started from. The generated resources under
@@ -41,13 +38,13 @@ sourceSets.main.resources {
 //                              has the data it needs. Re-port the providers when datagen
 //                              is needed again (recipe / blockstate edits).
 //
-// compat/wthit/** stays in the source set — WTHIT 19.0.1 ships a Forge 26.1.x
-// jar (wthit-26.1-forge-19.0.1.jar) so its compat sources compile and load.
+// compat/wthit/** and client/UsefulToolsConfigScreen.java stay in the source
+// set. WTHIT 19.0.1 ships a Forge 26.1.x jar. The config screen was
+// re-built against vanilla MC widgets + Forge's ConfigScreenHandler
+// extension point (no Cloth Config dependency required).
 sourceSets.main.java {
     exclude 'com/stonytark/usefultoolsmod/compat/jei/**'
     exclude 'com/stonytark/usefultoolsmod/compat/jer/**'
-    exclude 'com/stonytark/usefultoolsmod/client/UsefulToolsConfigScreen.java'
-    exclude 'com/stonytark/usefultoolsmod/client/ClientConfigRegistration.java'
     exclude 'com/stonytark/usefultoolsmod/datagen/**'
 }
 

@@ -5,6 +5,7 @@ import com.stonytark.usefultoolsmod.block.ModBlocks;
 import com.stonytark.usefultoolsmod.block.entity.ModBlockEntityTypes;
 import com.stonytark.usefultoolsmod.block.entity.ModMenuTypes;
 import com.stonytark.usefultoolsmod.block.entity.SpectralInfuserMenu;
+import com.stonytark.usefultoolsmod.client.ClientConfigRegistration;
 import com.stonytark.usefultoolsmod.client.SpectralInfuserScreen;
 import com.stonytark.usefultoolsmod.entity.ModEntities;
 import com.stonytark.usefultoolsmod.entity.client.GhostRenderer;
@@ -55,6 +56,14 @@ public class UsefultoolsMod {
 
         // Register our mod's ForgeConfigSpec
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        // Vanilla-only in-game config screen, registered via Forge's
+        // ConfigScreenHandler extension point. Client-side only: skip on dedicated
+        // server so the client-only Screen class isn't classloaded.
+        if (net.minecraftforge.fml.loading.FMLEnvironment.dist
+                == net.minecraftforge.api.distmarker.Dist.CLIENT) {
+            ClientConfigRegistration.register(context.getContainer());
+        }
     }
 
     private void commonSetup(final net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent event) {
