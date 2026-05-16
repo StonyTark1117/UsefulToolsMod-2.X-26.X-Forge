@@ -9,7 +9,7 @@ import com.stonytark.usefultoolsmod.entity.custom.GhostEntity;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -20,9 +20,9 @@ public class ModEventBusEvents {
         event.put(ModEntities.GHOST.get(), GhostEntity.createAttributes().build());
     }
     @SubscribeEvent
-    public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
+    public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
         event.register(ModEntities.GHOST.get(), SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES ,
-                GhostEntity::checkGhostSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+                GhostEntity::checkGhostSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 
     }
 

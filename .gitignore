@@ -2,6 +2,15 @@
 **/build/
 !**/src/**/build/
 
+# Forge / NeoForge dev-runtime data
+run/
+run-data/
+runs/
+runClient/
+runServer/
+runData/
+mcmodsrepo/
+
 # Ignore Gradle GUI config
 gradle-app.setting
 

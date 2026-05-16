@@ -15,7 +15,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.common.world.BiomeModifiers;
+import net.minecraftforge.common.world.ForgeBiomeModifiers;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModBiomeModifiers {
@@ -32,17 +32,17 @@ public class ModBiomeModifiers {
         var placedFeature = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
 
-        context.register(ADD_RGOLD_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
+        context.register(ADD_RGOLD_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.RGOLD_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
 
-        context.register(ADD_NETHER_RGOLD_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
+        context.register(ADD_NETHER_RGOLD_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_NETHER),
                 HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.NETHER_RGOLD_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
 
-        context.register(ADD_END_RGOLD_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
+        context.register(ADD_END_RGOLD_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_END),
                 HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.END_RGOLD_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
@@ -57,9 +57,9 @@ public class ModBiomeModifiers {
                 .add(new MobSpawnSettings.SpawnerData(ModEntities.GHOST.get(), 1, 1), 20)
                 .build();
 
-        context.register(SPAWN_GHOST, new BiomeModifiers.AddSpawnsBiomeModifier(overworldBiomes, ghostSpawn));
-        context.register(SPAWN_GHOST_NETHER, new BiomeModifiers.AddSpawnsBiomeModifier(netherBiomes, ghostSpawn));
-        context.register(SPAWN_GHOST_END, new BiomeModifiers.AddSpawnsBiomeModifier(endBiomes, ghostSpawn));
+        context.register(SPAWN_GHOST, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(overworldBiomes, ghostSpawn));
+        context.register(SPAWN_GHOST_NETHER, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(netherBiomes, ghostSpawn));
+        context.register(SPAWN_GHOST_END, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(endBiomes, ghostSpawn));
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {

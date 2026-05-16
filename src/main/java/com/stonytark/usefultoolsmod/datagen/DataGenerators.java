@@ -2,59 +2,65 @@ package com.stonytark.usefultoolsmod.datagen;
 
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.data.event.GatherDataEvent;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * 26.1 GatherDataEvent split: there is no longer one event with {@code includeClient()} /
- * {@code includeServer()} flags. Instead two distinct events fire — {@link GatherDataEvent.Client}
- * during {@code runClientData}, {@link GatherDataEvent.Server} during {@code runServerData}.
- * Client-only providers (model/blockstate) are registered in the Client handler, server-only
- * providers (recipes, loot tables, tags, advancements, datapack registries) in the Server one.
+ * Forge 26.1 keeps the single {@link GatherDataEvent} (with {@code includeClient()} /
+ * {@code includeServer()} flags) rather than NeoForge's split client/server events. We
+ * register every provider against the generator and gate it on the matching flag.
  */
 @EventBusSubscriber(modid = UsefultoolsMod.MOD_ID)
 public class DataGenerators {
 
     @SubscribeEvent
-    public static void onGatherClientData(GatherDataEvent.Client event) {
+    public static void onGatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
-        event.addProvider(new ModBlockStateProvider(packOutput));
-        event.addProvider(new ModItemModelProvider(packOutput));
-    }
-
-    @SubscribeEvent
-    public static void onGatherServerData(GatherDataEvent.Server event) {
-        DataGenerator generator = event.getGenerator();
-        PackOutput packOutput = generator.getPackOutput();
+        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        event.addProvider(new LootTableProvider(
-                packOutput,
-                Collections.emptySet(),
-                List.of(new LootTableProvider.SubProviderEntry(
-                        ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)),
-                lookupProvider));
+        // ── Client-side providers ──────────────────────────────────────────
+        generator.addProvider(event.includeClient(),
+                new ModBlockStateProvider(packOutput, existingFileHelper));
+        generator.addProvider(event.includeClient(),
+                new ModItemModelProvider(packOutput, existingFileHelper));
 
-        event.addProvider(new ModRecipeProvider.Runner(packOutput, lookupProvider));
+        // ── Server-side providers ──────────────────────────────────────────
+        generator.addProvider(event.includeServer(),
+                new LootTableProvider(
+                        packOutput,
+                        Collections.emptySet(),
+                        List.of(new LootTableProvider.SubProviderEntry(
+                                ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)),
+                        lookupProvider));
 
-        // Block + item tag providers must be created together so that item tags can copy
-        // entries from block tags via the TagLookup<Block> handed off by Neo.
-        event.createBlockAndItemTags(
-                (output, lookup) -> new ModBlockTagProvider(output, lookup),
-                (output, lookup, blockTagLookup) -> new ModItemTagProvider(output, lookup, blockTagLookup));
+        generator.addProvider(event.includeServer(),
+                new ModRecipeProvider.Runner(packOutput, lookupProvider));
 
-        event.createDatapackRegistryObjects(ModDatapackEntries.BUILDER, java.util.Set.of(UsefultoolsMod.MOD_ID));
+        ModBlockTagProvider blockTags = new ModBlockTagProvider(packOutput, lookupProvider, existingFileHelper);
+        generator.addProvider(event.includeServer(), blockTags);
+        generator.addProvider(event.includeServer(),
+                new ModItemTagProvider(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
 
-        event.addProvider(new ModAdvancementProvider(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(),
+                new DatapackBuiltinEntriesProvider(packOutput, lookupProvider, ModDatapackEntries.BUILDER, Set.of(UsefultoolsMod.MOD_ID)));
+
+        generator.addProvider(event.includeServer(),
+                new ModAdvancementProvider(packOutput, lookupProvider, existingFileHelper));
     }
 }

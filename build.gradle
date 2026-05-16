@@ -25,19 +25,27 @@ sourceSets.main.resources {
     srcDir 'src/generated/resources/server'
 }
 
-// Sources excluded from compile (no Forge 26.1 build available upstream as of 2026-05-15):
+// Sources excluded from compile:
 //   - compat/jei/**          - JEI 26.1.2 only publishes fabric/neoforge variants.
 //   - compat/wthit/**        - WTHIT latest forge-19.0.1 predates Forge 26.1.x.
 //   - compat/jer/**          - JER has no 26.1 build on Modrinth.
 //   - client/UsefulToolsConfigScreen.java
 //   - client/ClientConfigRegistration.java
 //                            - Cloth Config last forge build was 17.0.144 (MC 1.21).
+//   - datagen/**             - Forge 26.1 ModelProvider / BlockTagsProvider constructor
+//                              signatures diverged from the NeoForge version the port
+//                              started from. The generated resources under
+//                              src/generated/resources/ (~2900 files) cover everything
+//                              datagen produced for the NeoForge build, so the runtime
+//                              has the data it needs. Re-port the providers when datagen
+//                              is needed again (recipe / blockstate edits).
 sourceSets.main.java {
     exclude 'com/stonytark/usefultoolsmod/compat/jei/**'
     exclude 'com/stonytark/usefultoolsmod/compat/wthit/**'
     exclude 'com/stonytark/usefultoolsmod/compat/jer/**'
     exclude 'com/stonytark/usefultoolsmod/client/UsefulToolsConfigScreen.java'
     exclude 'com/stonytark/usefultoolsmod/client/ClientConfigRegistration.java'
+    exclude 'com/stonytark/usefultoolsmod/datagen/**'
 }
 
 minecraft {
@@ -45,7 +53,12 @@ minecraft {
         configureEach {
             workingDir = layout.projectDirectory.dir('run')
 
-            systemProperty 'eventbus.api.strictRuntimeChecks', 'true'
+            // Strict runtime checks reject any method on a scanned mod class whose first
+            // parameter extends Event but isn't @SubscribeEvent-annotated — even if the
+            // method is registered programmatically via EventBus#addListener. The mod's
+            // main class hosts commonSetup() and addCreative() that way, so leave the
+            // checker off in dev.
+            systemProperty 'eventbus.api.strictRuntimeChecks', 'false'
             systemProperty 'forge.enabledGameTestNamespaces', mod_id
             systemProperty 'forge.logging.markers', 'REGISTRIES'
             systemProperty 'forge.logging.console.level', 'debug'
@@ -113,7 +126,7 @@ tasks.named('processResources', ProcessResources).configure {
     inputs.properties replaceProperties
 
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
-        expand replaceProperties + [project: project]
+        expand replaceProperties
     }
 }
 

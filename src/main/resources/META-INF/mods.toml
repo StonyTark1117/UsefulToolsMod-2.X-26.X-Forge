@@ -53,10 +53,11 @@ description='''${mod_description}'''
 #     side="CLIENT"
 
 # Optional integration: Just Enough Resources (JER). No 26.1 build on Modrinth yet.
-# [[dependencies.${mod_id}]]
+# When JER ships a 26.1 build, restore this dependency block with the real version range.
+# [[dependencies.usefultoolsmod]]
 #     modId="jeresources"
 #     type="optional"
-#     versionRange="[${jer_mod_version},)"
+#     versionRange="[1.9.0,)"
 #     ordering="AFTER"
 #     side="CLIENT"
 
@@ -66,7 +67,7 @@ description='''${mod_description}'''
 # are inert when Magnetization isn't installed.
 [[dependencies.${mod_id}]]
     modId="magnetization"
-    type="optional"
+    mandatory=false
     versionRange="[0.1.0,)"
     ordering="AFTER"
     side="BOTH"

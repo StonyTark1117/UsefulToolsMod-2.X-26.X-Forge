@@ -47,13 +47,14 @@ import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.event.tick.LevelTickEvent;
-import net.minecraftforge.event.tick.PlayerTickEvent;
+import net.minecraftforge.event.TickEvent.LevelTickEvent;
+import net.minecraftforge.event.TickEvent.PlayerTickEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingIncomingDamageEvent;
-import net.minecraftforge.event.entity.living.FinalizeSpawnEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
@@ -87,7 +88,7 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
-        Player player = event.getEntity();
+        Player player = event.player();
         if (player == null || player.isSpectator()) return;
 
         if (Config.overpowerEnabled && Config.opToolEffectsEnabled) {
@@ -174,7 +175,7 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onLevelTick(LevelTickEvent.Post event) {
-        if (!(event.getLevel() instanceof ServerLevel serverLevel)) return;
+        if (!(event.level() instanceof ServerLevel serverLevel)) return;
         if (BURNING_DROPPED_ITEMS.isEmpty()) return;
 
         ResourceKey<Level> thisDim = serverLevel.dimension();
@@ -473,7 +474,7 @@ public class ModEvents {
     // Natural-spawn rate is enforced by GhostEntity.checkGhostSpawnRules, which
     // only runs for natural spawning — spawn eggs / /summon / breeding bypass it.
     @SubscribeEvent
-    public static void onFinalizeSpawn(FinalizeSpawnEvent event) {
+    public static void onFinalizeSpawn(MobSpawnEvent.FinalizeSpawn event) {
         if (!(event.getEntity() instanceof GhostEntity)) return;
         if (!Config.ghostEnabled) {
             event.setSpawnCancelled(true);
@@ -789,21 +790,21 @@ public class ModEvents {
      * Consumes 1 durability per use.
      */
     @SubscribeEvent
-    public static void onFniRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        if (!Config.fniEnabled || !Config.fniFireEffects) return;
+    public static boolean onFniRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+        if (!Config.fniEnabled || !Config.fniFireEffects) return false;
         Player player = event.getEntity();
-        if (!player.isShiftKeyDown()) return;
-        if (event.getHand() != InteractionHand.MAIN_HAND) return;
+        if (!player.isShiftKeyDown()) return false;
+        if (event.getHand() != InteractionHand.MAIN_HAND) return false;
 
         ItemStack held = player.getMainHandItem();
-        if (!isFniTool(held)) return;
+        if (!isFniTool(held)) return false;
 
         Level level = event.getLevel();
-        if (level.isClientSide()) return;
+        if (level.isClientSide()) return false;
 
         BlockPos clickedPos = event.getPos();
         Direction face = event.getFace();
-        if (face == null) return;
+        if (face == null) return false;
 
         BlockPos firePos = clickedPos.relative(face);
         BlockState target = level.getBlockState(firePos);
@@ -812,8 +813,9 @@ public class ModEvents {
             level.playSound(null, firePos, SoundEvents.FLINTANDSTEEL_USE,
                     SoundSource.BLOCKS, 1.0f, level.getRandom().nextFloat() * 0.4f + 0.8f);
             held.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
-            event.setCanceled(true);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -2014,11 +2016,12 @@ public class ModEvents {
     }
 
     // =======================================================================
-    // Food tool-hit effects + armor reactive events (LivingIncomingDamageEvent)
+    // Food tool-hit effects + armor reactive events (LivingHurtEvent)
     // =======================================================================
 
     @SubscribeEvent
-    public static void onLivingHurt(LivingIncomingDamageEvent event) {
+    public static boolean onLivingHurt(LivingHurtEvent event) {
+        boolean canceled = false;
         DamageSource source = event.getSource();
 
         // --- Tool-hit effects (attacker holding food tool) ---
@@ -2159,7 +2162,7 @@ public class ModEvents {
                     && isWearingFullSet(victim, ModEvents::isChorusFruitArmor)) {
                 if (victim.level().getRandom().nextFloat() < 0.15f) {
                     teleportRandomly(victim, 3, 8);
-                    event.setCanceled(true);
+                    canceled = true;
                 }
             }
             // Vanilla material armor reactive effects
@@ -2193,7 +2196,7 @@ public class ModEvents {
                     && isWearingFullSet(victim, ModEvents::isPurpurArmor)) {
                 if (victim.level().getRandom().nextFloat() < 0.20f) {
                     teleportRandomly(victim, 3, 8);
-                    event.setCanceled(true);
+                    canceled = true;
                 }
             }
             if (Config.shulkerEnabled && Config.shulkerEffects
@@ -2215,6 +2218,7 @@ public class ModEvents {
                 attacker.setRemainingFireTicks(60);
             }
         }
+        return canceled;
     }
 
     // =======================================================================
@@ -2222,16 +2226,15 @@ public class ModEvents {
     // =======================================================================
 
     @SubscribeEvent
-    public static void onLivingChangeTarget(LivingChangeTargetEvent event) {
-        if (!(event.getNewAboutToBeSetTarget() instanceof Player player)) return;
+    public static boolean onLivingChangeTarget(LivingChangeTargetEvent event) {
+        if (!(event.getNewTarget() instanceof Player player)) return false;
 
         // Rotten Flesh full set — undead mobs ignore player
         if (Config.rottenFleshEnabled && Config.rottenFleshUndeadNeutral
                 && isWearingFullSet(player, ModEvents::isRottenFleshArmor)) {
             if (event.getEntity() instanceof Zombie || event.getEntity() instanceof AbstractSkeleton
                     || event.getEntity() instanceof Phantom) {
-                event.setCanceled(true);
-                return;
+                return true;
             }
         }
 
@@ -2239,7 +2242,7 @@ public class ModEvents {
         if (Config.pumpkinPieEnabled && Config.pumpkinPieEndermanAvoidance
                 && isPumpkinPieArmor(player.getItemBySlot(EquipmentSlot.HEAD))) {
             if (event.getEntity() instanceof EnderMan) {
-                event.setCanceled(true);
+                return true;
             }
         }
 
@@ -2248,8 +2251,7 @@ public class ModEvents {
                 && isBoneArmor(player.getItemBySlot(EquipmentSlot.HEAD))) {
             if ((event.getEntity() instanceof Zombie || event.getEntity() instanceof AbstractSkeleton)
                     && event.getEntity().distanceTo(player) > 16) {
-                event.setCanceled(true);
-                return;
+                return true;
             }
         }
 
@@ -2257,8 +2259,7 @@ public class ModEvents {
         if (Config.phantomEnabled && Config.phantomEffects
                 && isWearingFullSet(player, ModEvents::isPhantomArmor)) {
             if (event.getEntity() instanceof Phantom) {
-                event.setCanceled(true);
-                return;
+                return true;
             }
         }
 
@@ -2266,8 +2267,7 @@ public class ModEvents {
         if (Config.nautilusEnabled && Config.nautilusEffects
                 && isWearingFullSet(player, ModEvents::isNautilusArmor)) {
             if (event.getEntity() instanceof Guardian || event.getEntity() instanceof Drowned) {
-                event.setCanceled(true);
-                return;
+                return true;
             }
         }
 
@@ -2275,8 +2275,7 @@ public class ModEvents {
         if (Config.eyeOfEnderEnabled && Config.eyeOfEnderEffects
                 && isWearingFullSet(player, ModEvents::isEyeOfEnderArmor)) {
             if (event.getEntity() instanceof EnderMan) {
-                event.setCanceled(true);
-                return;
+                return true;
             }
         }
 
@@ -2284,8 +2283,7 @@ public class ModEvents {
         if (Config.echoShardEnabled && Config.echoShardEffects
                 && isWearingFullSet(player, ModEvents::isEchoShardArmor)) {
             if (event.getEntity() instanceof Warden) {
-                event.setCanceled(true);
-                return;
+                return true;
             }
         }
 
@@ -2293,10 +2291,10 @@ public class ModEvents {
         if (Config.turtleScuteEnabled && Config.turtleScuteEffects
                 && isWearingFullSet(player, ModEvents::isTurtleScuteArmor)) {
             if (event.getEntity() instanceof Guardian) {
-                event.setCanceled(true);
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     // =======================================================================

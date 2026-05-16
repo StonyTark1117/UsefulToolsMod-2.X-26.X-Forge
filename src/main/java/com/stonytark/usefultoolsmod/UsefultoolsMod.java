@@ -11,13 +11,11 @@ import com.stonytark.usefultoolsmod.entity.client.GhostRenderer;
 import com.stonytark.usefultoolsmod.item.ModCreativeModeTabs;
 import com.stonytark.usefultoolsmod.item.ModItems;
 import com.stonytark.usefultoolsmod.trigger.ModTriggers;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterMenuScreensEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -48,11 +46,12 @@ public class UsefultoolsMod {
         ModMenuTypes.register(modBusGroup);
         ModTriggers.register(modBusGroup);
 
-        // Register ourselves for server and other game events
-        MinecraftForge.EVENT_BUS.register(this);
-
-        // Register the item to a creative tab on the mod event bus
-        BuildCreativeModeTabContentsEvent.getBus(modBusGroup).addListener(this::addCreative);
+        // Register the item to a creative tab. BuildCreativeModeTabContentsEvent fires on
+        // the default (game) bus in Forge 26.1.2 — it has a static .BUS field, not getBus().
+        // Game-bus listeners go directly on the event's BUS rather than through
+        // MinecraftForge.EVENT_BUS.register(this), which is gated by the eventbus 7.x
+        // migration helper and rejects classes that have only a single @SubscribeEvent.
+        BuildCreativeModeTabContentsEvent.BUS.addListener(this::addCreative);
 
         // Register our mod's ForgeConfigSpec
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -90,20 +89,13 @@ public class UsefultoolsMod {
         }
     }
 
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-    }
-
     @Mod.EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.GHOST.get(), GhostRenderer::new);
-        }
-
-        @SubscribeEvent
-        public static void onRegisterMenuScreens(RegisterMenuScreensEvent event) {
-            event.register(ModMenuTypes.SPECTRAL_INFUSER_MENU.get(), SpectralInfuserScreen::new);
+            event.enqueueWork(() ->
+                    MenuScreens.register(ModMenuTypes.SPECTRAL_INFUSER_MENU.get(), SpectralInfuserScreen::new));
         }
     }
 }
