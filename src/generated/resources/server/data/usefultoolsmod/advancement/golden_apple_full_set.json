@@ -1,0 +1,137 @@
+{
+  "parent": "usefultoolsmod:golden_apple_eat",
+  "criteria": {
+    "has_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:golden_apple_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:golden_apple_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:golden_apple_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:golden_apple_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:golden_apple_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:golden_apple_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:golden_apple_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:golden_apple_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:golden_apple_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.golden_apple_full_set.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "usefultoolsmod:golden_apple_chestplate"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.golden_apple_full_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_sword"
+    ],
+    [
+      "has_pickaxe"
+    ],
+    [
+      "has_axe"
+    ],
+    [
+      "has_shovel"
+    ],
+    [
+      "has_hoe"
+    ],
+    [
+      "has_helmet"
+    ],
+    [
+      "has_chestplate"
+    ],
+    [
+      "has_leggings"
+    ],
+    [
+      "has_boots"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:honey_bottle"
+  },
+  "pattern": [
+    "   ",
+    "A A",
+    "A A"
+  ],
+  "result": {
+    "id": "usefultoolsmod:honey_boots"
+  }
+}

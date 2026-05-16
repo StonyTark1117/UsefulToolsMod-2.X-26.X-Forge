@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hrblock": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:hrblock"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "usefultoolsmod:hred_from_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_hrblock"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "usefultoolsmod:hred_from_block"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_rscrap_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rscrap_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.rscrap.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:rscrap_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.rscrap.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_rscrap_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

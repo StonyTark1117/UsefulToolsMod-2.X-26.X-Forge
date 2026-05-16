@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:hardened_coal",
+  "criteria": {
+    "has_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:coal_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.coal_tools.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:coal_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.coal_tools.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_pickaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

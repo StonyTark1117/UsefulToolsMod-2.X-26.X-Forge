@@ -1,0 +1,24 @@
+{
+  "values": [
+    "usefultoolsmod:rgoldblock",
+    "usefultoolsmod:hrblock",
+    "usefultoolsmod:rgoldore",
+    "usefultoolsmod:rgold_nether_ore",
+    "usefultoolsmod:rgold_end_ore",
+    "usefultoolsmod:rgold_deepslate_ore",
+    "usefultoolsmod:semblock",
+    "usefultoolsmod:soblock",
+    "usefultoolsmod:lblock",
+    "usefultoolsmod:spectral_infuser",
+    "usefultoolsmod:ectoplasm_block",
+    "usefultoolsmod:hglow_block",
+    "usefultoolsmod:raw_rgold_block",
+    "usefultoolsmod:refined_ectoplasm_block",
+    "usefultoolsmod:hardened_coal_block",
+    "usefultoolsmod:obshard_block",
+    "usefultoolsmod:calcified_amethyst_block",
+    "usefultoolsmod:glacial_shard_block",
+    "usefultoolsmod:polished_quartz_block",
+    "usefultoolsmod:polished_prismarine_block"
+  ]
+}

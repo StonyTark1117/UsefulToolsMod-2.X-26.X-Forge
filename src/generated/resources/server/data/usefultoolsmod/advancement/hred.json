@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_hred": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:hred"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.hred.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:hred"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.hred.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_hred"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

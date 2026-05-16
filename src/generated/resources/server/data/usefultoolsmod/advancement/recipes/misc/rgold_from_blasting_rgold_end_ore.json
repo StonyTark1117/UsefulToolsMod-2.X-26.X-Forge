@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rgold_end_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rgold_end_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "usefultoolsmod:rgold_from_blasting_rgold_end_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_rgold_end_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "usefultoolsmod:rgold_from_blasting_rgold_end_ore"
+    ]
+  }
+}

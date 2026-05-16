@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "usefultoolsmod:hardened_coal_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "usefultoolsmod:hardened_coal"
+  }
+}

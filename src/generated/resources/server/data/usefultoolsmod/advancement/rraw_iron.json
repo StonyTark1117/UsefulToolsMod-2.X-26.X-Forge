@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_rraw_iron_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rraw_iron_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.rraw_iron.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:rraw_iron_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.rraw_iron.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_rraw_iron_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

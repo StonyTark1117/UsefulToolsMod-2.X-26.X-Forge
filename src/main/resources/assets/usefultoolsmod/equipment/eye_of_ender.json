@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:eye_of_ender" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:eye_of_ender" }
+    ]
+  }
+}

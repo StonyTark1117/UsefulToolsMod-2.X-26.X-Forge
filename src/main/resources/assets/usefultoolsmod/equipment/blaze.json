@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:blaze" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:blaze" }
+    ]
+  }
+}

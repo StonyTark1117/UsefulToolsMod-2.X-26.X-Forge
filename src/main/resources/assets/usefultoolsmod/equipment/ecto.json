@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:ecto" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:ecto" }
+    ]
+  }
+}

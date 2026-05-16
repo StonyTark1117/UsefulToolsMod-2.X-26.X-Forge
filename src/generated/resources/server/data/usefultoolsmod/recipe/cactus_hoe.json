@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:cactus",
+    "B": "minecraft:stick"
+  },
+  "pattern": [
+    "AA ",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "id": "usefultoolsmod:cactus_hoe"
+  }
+}

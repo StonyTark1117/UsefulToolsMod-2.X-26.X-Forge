@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_rlapis": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rlapis"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.rlapis.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:rlapis"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.rlapis.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_rlapis"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

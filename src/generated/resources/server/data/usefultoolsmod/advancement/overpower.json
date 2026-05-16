@@ -1,0 +1,33 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_overpower_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:overpower_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.overpower.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "usefultoolsmod:overpower_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.overpower.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_overpower_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

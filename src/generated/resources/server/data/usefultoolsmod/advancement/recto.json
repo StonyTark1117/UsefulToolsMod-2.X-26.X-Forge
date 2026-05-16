@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:ectoplasm",
+  "criteria": {
+    "has_recto_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:recto_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.recto.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:recto_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.recto.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_recto_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_semblock": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:semblock"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "usefultoolsmod:sem_from_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_semblock"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "usefultoolsmod:sem_from_block"
+    ]
+  }
+}

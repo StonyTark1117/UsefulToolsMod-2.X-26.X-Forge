@@ -1,0 +1,73 @@
+{
+  "parent": "usefultoolsmod:coal_armor",
+  "criteria": {
+    "has_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:coal_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:coal_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:coal_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:coal_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.coal_full_set.description"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "id": "usefultoolsmod:coal_chestplate"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.coal_full_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_helmet"
+    ],
+    [
+      "has_chestplate"
+    ],
+    [
+      "has_leggings"
+    ],
+    [
+      "has_boots"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

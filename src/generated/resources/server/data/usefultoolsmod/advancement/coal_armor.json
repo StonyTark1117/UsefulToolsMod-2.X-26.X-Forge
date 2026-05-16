@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:hardened_coal",
+  "criteria": {
+    "has_coal_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:coal_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.coal_armor.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:coal_helmet"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.coal_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_coal_helmet"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_grenade": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:grenade"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.grenade.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:grenade"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.grenade.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_grenade"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

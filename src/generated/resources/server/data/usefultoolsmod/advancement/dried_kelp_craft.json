@@ -1,0 +1,76 @@
+{
+  "parent": "usefultoolsmod:let_them_eat_cake",
+  "criteria": {
+    "has_tool_0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:dried_kelp_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_tool_1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:dried_kelp_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_tool_2": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:dried_kelp_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_tool_3": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:dried_kelp_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_tool_4": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:dried_kelp_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.dried_kelp_craft.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:dried_kelp_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.dried_kelp_craft.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_tool_0",
+      "has_tool_1",
+      "has_tool_2",
+      "has_tool_3",
+      "has_tool_4"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

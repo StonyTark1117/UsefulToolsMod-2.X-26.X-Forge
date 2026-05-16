@@ -1,0 +1,5 @@
+// 26.1.2	2026-05-15T15:12:35.696310269	Tags for minecraft:item mod id usefultoolsmod
+60de9cdd6245cdfc0c535697532f310ca3d6736a data/magnetization/tags/item/ferromagnetic.json
+8cb4020b52ca8984b1085dabd22269690f0a5dfe data/magnetization/tags/item/metal_armor.json
+ec8b1fab43412b35fc18fcfc892ca6bbd18f2c00 data/magnetization/tags/item/metal_tools.json
+16c15d08e33919eac0badb59ed851a4e4f3a9f95 data/minecraft/tags/item/trimmable_armor.json

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:sweet_berries",
+    "B": "minecraft:stick"
+  },
+  "pattern": [
+    "AA ",
+    "AB ",
+    " B "
+  ],
+  "result": {
+    "id": "usefultoolsmod:sweet_berry_axe"
+  }
+}

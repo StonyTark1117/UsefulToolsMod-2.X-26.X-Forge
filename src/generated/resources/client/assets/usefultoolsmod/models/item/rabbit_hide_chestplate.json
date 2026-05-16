@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "usefultoolsmod:item/rabbit_hide_chestplate"
+  }
+}

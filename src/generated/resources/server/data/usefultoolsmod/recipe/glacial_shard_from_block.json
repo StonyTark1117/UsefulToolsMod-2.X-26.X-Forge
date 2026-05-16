@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "usefultoolsmod:glacial_shard_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "usefultoolsmod:glacial_shard"
+  }
+}

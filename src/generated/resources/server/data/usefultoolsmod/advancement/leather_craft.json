@@ -1,0 +1,76 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_leather_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:leather_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_leather_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:leather_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_leather_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:leather_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_leather_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:leather_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_leather_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:leather_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.leather_craft.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:leather_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.leather_craft.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_leather_sword",
+      "has_leather_pickaxe",
+      "has_leather_axe",
+      "has_leather_shovel",
+      "has_leather_hoe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

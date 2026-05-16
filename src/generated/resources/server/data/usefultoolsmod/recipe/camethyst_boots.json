@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "usefultoolsmod:calcified_amethyst"
+  },
+  "pattern": [
+    "   ",
+    "A A",
+    "A A"
+  ],
+  "result": {
+    "id": "usefultoolsmod:camethyst_boots"
+  }
+}

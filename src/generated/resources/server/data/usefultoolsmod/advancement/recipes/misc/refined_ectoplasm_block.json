@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_refined_ectoplasm": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:refined_ectoplasm"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "usefultoolsmod:refined_ectoplasm_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_refined_ectoplasm"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "usefultoolsmod:refined_ectoplasm_block"
+    ]
+  }
+}

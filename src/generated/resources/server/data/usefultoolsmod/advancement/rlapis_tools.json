@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:rlapis",
+  "criteria": {
+    "has_rlapis_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rlapis_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.rlapis_tools.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:rlapis_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.rlapis_tools.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_rlapis_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

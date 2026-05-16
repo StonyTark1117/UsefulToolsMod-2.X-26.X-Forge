@@ -1,0 +1,137 @@
+{
+  "parent": "usefultoolsmod:echo_shard_craft",
+  "criteria": {
+    "has_item_0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:echo_shard_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:echo_shard_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_2": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:echo_shard_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_3": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:echo_shard_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_4": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:echo_shard_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_5": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:echo_shard_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_6": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:echo_shard_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_7": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:echo_shard_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_8": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:echo_shard_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.echo_shard_set.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "usefultoolsmod:echo_shard_chestplate"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.echo_shard_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_item_0"
+    ],
+    [
+      "has_item_1"
+    ],
+    [
+      "has_item_2"
+    ],
+    [
+      "has_item_3"
+    ],
+    [
+      "has_item_4"
+    ],
+    [
+      "has_item_5"
+    ],
+    [
+      "has_item_6"
+    ],
+    [
+      "has_item_7"
+    ],
+    [
+      "has_item_8"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

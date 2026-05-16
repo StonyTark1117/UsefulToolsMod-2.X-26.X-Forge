@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "usefultoolsmod:ectoplasm",
+    "B": "minecraft:diamond"
+  },
+  "pattern": [
+    " A ",
+    "ABA",
+    " A "
+  ],
+  "result": {
+    "id": "usefultoolsmod:refined_ectoplasm"
+  }
+}

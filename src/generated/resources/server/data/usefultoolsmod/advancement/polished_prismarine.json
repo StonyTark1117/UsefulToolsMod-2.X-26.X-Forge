@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_polished_prismarine": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:polished_prismarine"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.polished_prismarine.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:polished_prismarine"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.polished_prismarine.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_polished_prismarine"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

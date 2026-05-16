@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:cactus" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:cactus" }
+    ]
+  }
+}

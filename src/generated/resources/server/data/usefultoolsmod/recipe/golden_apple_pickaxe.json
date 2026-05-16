@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:golden_apple",
+    "B": "minecraft:stick"
+  },
+  "pattern": [
+    "AAA",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "id": "usefultoolsmod:golden_apple_pickaxe"
+  }
+}

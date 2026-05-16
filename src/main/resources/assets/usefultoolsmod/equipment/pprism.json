@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:pprism" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:pprism" }
+    ]
+  }
+}

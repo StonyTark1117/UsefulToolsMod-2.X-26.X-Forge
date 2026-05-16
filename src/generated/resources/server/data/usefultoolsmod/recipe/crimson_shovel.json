@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:crimson_planks",
+    "B": "minecraft:stick"
+  },
+  "pattern": [
+    " A ",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "id": "usefultoolsmod:crimson_shovel"
+  }
+}

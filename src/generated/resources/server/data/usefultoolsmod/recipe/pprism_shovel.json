@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "usefultoolsmod:polished_prismarine",
+    "B": "minecraft:stick"
+  },
+  "pattern": [
+    " A ",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "id": "usefultoolsmod:pprism_shovel"
+  }
+}

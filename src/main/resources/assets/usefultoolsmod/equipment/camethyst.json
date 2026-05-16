@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:camethyst" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:camethyst" }
+    ]
+  }
+}

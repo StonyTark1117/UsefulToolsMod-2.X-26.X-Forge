@@ -1,0 +1,72 @@
+{
+  "parent": "usefultoolsmod:obingot",
+  "criteria": {
+    "has_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:obsidian_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:obsidian_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:obsidian_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:obsidian_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.obsidian_armor.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "usefultoolsmod:obsidian_chestplate"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.obsidian_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_helmet"
+    ],
+    [
+      "has_chestplate"
+    ],
+    [
+      "has_leggings"
+    ],
+    [
+      "has_boots"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

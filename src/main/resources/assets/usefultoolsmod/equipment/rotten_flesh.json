@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:rotten_flesh" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:rotten_flesh" }
+    ]
+  }
+}

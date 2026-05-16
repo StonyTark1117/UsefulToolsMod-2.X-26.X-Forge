@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:echo_shard",
+    "B": "minecraft:stick"
+  },
+  "pattern": [
+    "AA ",
+    "AB ",
+    " B "
+  ],
+  "result": {
+    "id": "usefultoolsmod:echo_shard_axe"
+  }
+}

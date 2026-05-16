@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:raw_iron",
+    "B": "minecraft:stick"
+  },
+  "pattern": [
+    " A ",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "id": "usefultoolsmod:rraw_iron_shovel"
+  }
+}

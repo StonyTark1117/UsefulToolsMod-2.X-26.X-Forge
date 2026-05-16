@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:nether_brick" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:nether_brick" }
+    ]
+  }
+}

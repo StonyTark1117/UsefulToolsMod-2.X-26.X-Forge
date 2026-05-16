@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "minecraft:prismarine_shard",
+    "B": "minecraft:prismarine_crystals"
+  },
+  "pattern": [
+    " A ",
+    "ABA",
+    " A "
+  ],
+  "result": {
+    "id": "usefultoolsmod:polished_prismarine"
+  }
+}

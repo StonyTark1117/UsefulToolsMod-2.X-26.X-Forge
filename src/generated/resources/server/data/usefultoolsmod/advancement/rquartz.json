@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_rquartz_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rquartz_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.rquartz.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:rquartz_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.rquartz.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_rquartz_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

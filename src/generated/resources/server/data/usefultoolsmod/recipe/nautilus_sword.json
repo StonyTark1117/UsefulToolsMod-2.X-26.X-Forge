@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:nautilus_shell",
+    "B": "minecraft:stick"
+  },
+  "pattern": [
+    " A ",
+    " A ",
+    " B "
+  ],
+  "result": {
+    "id": "usefultoolsmod:nautilus_sword"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "usefultoolsmod:rgoldblock"
+  ],
+  "result": {
+    "count": 9,
+    "id": "usefultoolsmod:rgold"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:rlapis" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:rlapis" }
+    ]
+  }
+}

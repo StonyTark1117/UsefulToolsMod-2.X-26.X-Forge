@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "usefultoolsmod:polished_prismarine_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "usefultoolsmod:polished_prismarine"
+  }
+}

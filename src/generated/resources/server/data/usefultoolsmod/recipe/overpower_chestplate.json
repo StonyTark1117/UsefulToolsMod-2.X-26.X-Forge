@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:diamond_block",
+    "B": "usefultoolsmod:obingot",
+    "C": "usefultoolsmod:sem",
+    "D": "usefultoolsmod:rgold"
+  },
+  "pattern": [
+    "ACA",
+    "ABA",
+    "ADB"
+  ],
+  "result": {
+    "id": "usefultoolsmod:overpower_chestplate"
+  }
+}

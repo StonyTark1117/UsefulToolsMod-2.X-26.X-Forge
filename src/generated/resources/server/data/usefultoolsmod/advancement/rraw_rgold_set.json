@@ -1,0 +1,85 @@
+{
+  "parent": "usefultoolsmod:rraw_rgold",
+  "criteria": {
+    "has_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rraw_rgold_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rraw_rgold_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rraw_rgold_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rraw_rgold_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rraw_rgold_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.rraw_rgold_set.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "usefultoolsmod:rraw_rgold_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.rraw_rgold_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_sword"
+    ],
+    [
+      "has_pickaxe"
+    ],
+    [
+      "has_shovel"
+    ],
+    [
+      "has_axe"
+    ],
+    [
+      "has_hoe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

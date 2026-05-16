@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:dragon_breath",
+    "B": "minecraft:stick"
+  },
+  "pattern": [
+    " A ",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "id": "usefultoolsmod:dragon_breath_shovel"
+  }
+}

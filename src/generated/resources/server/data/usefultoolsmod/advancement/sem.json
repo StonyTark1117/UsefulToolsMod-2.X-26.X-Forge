@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_sem": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:sem"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.sem.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:sem"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.sem.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_sem"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

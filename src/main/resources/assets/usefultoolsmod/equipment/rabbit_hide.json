@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:rabbit_hide" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:rabbit_hide" }
+    ]
+  }
+}

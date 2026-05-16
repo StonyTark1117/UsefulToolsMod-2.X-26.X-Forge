@@ -1,0 +1,85 @@
+{
+  "parent": "usefultoolsmod:feather_craft",
+  "criteria": {
+    "has_tool_0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:feather_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_tool_1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:feather_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_tool_2": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:feather_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_tool_3": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:feather_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_tool_4": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:feather_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.feather_set.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "usefultoolsmod:feather_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.feather_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_tool_0"
+    ],
+    [
+      "has_tool_1"
+    ],
+    [
+      "has_tool_2"
+    ],
+    [
+      "has_tool_3"
+    ],
+    [
+      "has_tool_4"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

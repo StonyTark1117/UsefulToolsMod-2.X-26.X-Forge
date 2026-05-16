@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:turtle_scute"
+  },
+  "pattern": [
+    "AAA",
+    "A A",
+    "   "
+  ],
+  "result": {
+    "id": "usefultoolsmod:turtle_scute_helmet"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:mushroom" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:mushroom" }
+    ]
+  }
+}

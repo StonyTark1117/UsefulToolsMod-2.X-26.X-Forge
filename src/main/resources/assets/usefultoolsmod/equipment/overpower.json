@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:overpower" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:overpower" }
+    ]
+  }
+}

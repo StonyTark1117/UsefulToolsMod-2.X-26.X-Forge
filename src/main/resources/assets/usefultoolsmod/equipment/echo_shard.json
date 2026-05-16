@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:echo_shard" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:echo_shard" }
+    ]
+  }
+}

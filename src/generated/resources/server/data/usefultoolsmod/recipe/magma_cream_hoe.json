@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:magma_cream",
+    "B": "minecraft:stick"
+  },
+  "pattern": [
+    "AA ",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "id": "usefultoolsmod:magma_cream_hoe"
+  }
+}

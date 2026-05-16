@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "usefultoolsmod:block/spectral_infuser_side",
+    "front": "usefultoolsmod:block/spectral_infuser_front",
+    "side": "usefultoolsmod:block/spectral_infuser_side",
+    "top": "usefultoolsmod:block/spectral_infuser_top"
+  }
+}

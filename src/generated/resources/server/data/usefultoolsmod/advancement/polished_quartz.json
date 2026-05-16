@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_polished_quartz": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:polished_quartz"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.polished_quartz.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:polished_quartz"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.polished_quartz.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_polished_quartz"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

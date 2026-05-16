@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:ore_found",
+  "criteria": {
+    "has_end_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rgold_end_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.end_ore.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:rgold_end_ore"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.end_ore.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_end_ore"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

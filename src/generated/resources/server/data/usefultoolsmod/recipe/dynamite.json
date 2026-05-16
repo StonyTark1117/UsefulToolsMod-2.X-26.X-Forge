@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:paper",
+    "B": "minecraft:string",
+    "C": "usefultoolsmod:grenade"
+  },
+  "pattern": [
+    " B ",
+    "CBC",
+    " A "
+  ],
+  "result": {
+    "id": "usefultoolsmod:dynamite"
+  }
+}

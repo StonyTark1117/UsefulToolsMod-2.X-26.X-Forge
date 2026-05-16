@@ -1,0 +1,67 @@
+{
+  "parent": "usefultoolsmod:pumpkin_pie_craft",
+  "criteria": {
+    "eat_tool_0": {
+      "conditions": {
+        "item": {
+          "items": "usefultoolsmod:pumpkin_pie_sword"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_tool_1": {
+      "conditions": {
+        "item": {
+          "items": "usefultoolsmod:pumpkin_pie_pickaxe"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_tool_2": {
+      "conditions": {
+        "item": {
+          "items": "usefultoolsmod:pumpkin_pie_axe"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_tool_3": {
+      "conditions": {
+        "item": {
+          "items": "usefultoolsmod:pumpkin_pie_shovel"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_tool_4": {
+      "conditions": {
+        "item": {
+          "items": "usefultoolsmod:pumpkin_pie_hoe"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.pumpkin_pie_eat.description"
+    },
+    "hidden": true,
+    "icon": {
+      "id": "minecraft:pumpkin_pie"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.pumpkin_pie_eat.title"
+    }
+  },
+  "requirements": [
+    [
+      "eat_tool_0",
+      "eat_tool_1",
+      "eat_tool_2",
+      "eat_tool_3",
+      "eat_tool_4"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

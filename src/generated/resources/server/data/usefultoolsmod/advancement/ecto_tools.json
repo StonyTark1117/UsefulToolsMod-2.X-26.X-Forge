@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:refined_ectoplasm",
+  "criteria": {
+    "has_ecto_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:ecto_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.ecto_tools.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:ecto_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.ecto_tools.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_ecto_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

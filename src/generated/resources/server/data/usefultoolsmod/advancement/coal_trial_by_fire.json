@@ -1,0 +1,26 @@
+{
+  "parent": "usefultoolsmod:coal_tools",
+  "criteria": {
+    "coal_tool_ignited": {
+      "trigger": "usefultoolsmod:coal_tool_ignited"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.coal_trial_by_fire.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "usefultoolsmod:coal_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.coal_trial_by_fire.title"
+    }
+  },
+  "requirements": [
+    [
+      "coal_tool_ignited"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

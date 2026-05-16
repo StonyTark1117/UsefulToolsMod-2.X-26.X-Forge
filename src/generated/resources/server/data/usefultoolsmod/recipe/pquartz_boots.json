@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "usefultoolsmod:polished_quartz"
+  },
+  "pattern": [
+    "   ",
+    "A A",
+    "A A"
+  ],
+  "result": {
+    "id": "usefultoolsmod:pquartz_boots"
+  }
+}

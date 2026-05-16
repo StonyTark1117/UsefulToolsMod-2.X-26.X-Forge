@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_snow_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:snow_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.snow_tools.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:snow_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.snow_tools.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_snow_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:chorus_fruit" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:chorus_fruit" }
+    ]
+  }
+}

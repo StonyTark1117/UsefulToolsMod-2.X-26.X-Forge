@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_soblock": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:soblock"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "usefultoolsmod:overpower_sword"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_soblock"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "usefultoolsmod:overpower_sword"
+    ]
+  }
+}

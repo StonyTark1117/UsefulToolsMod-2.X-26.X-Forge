@@ -1,0 +1,137 @@
+{
+  "parent": "usefultoolsmod:dried_kelp_eat",
+  "criteria": {
+    "has_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:dried_kelp_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:dried_kelp_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:dried_kelp_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:dried_kelp_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:dried_kelp_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:dried_kelp_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:dried_kelp_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:dried_kelp_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:dried_kelp_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.dried_kelp_full_set.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "usefultoolsmod:dried_kelp_chestplate"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.dried_kelp_full_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_sword"
+    ],
+    [
+      "has_pickaxe"
+    ],
+    [
+      "has_axe"
+    ],
+    [
+      "has_shovel"
+    ],
+    [
+      "has_hoe"
+    ],
+    [
+      "has_helmet"
+    ],
+    [
+      "has_chestplate"
+    ],
+    [
+      "has_leggings"
+    ],
+    [
+      "has_boots"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

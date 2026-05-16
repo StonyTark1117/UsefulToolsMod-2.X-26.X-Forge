@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:grenade",
+  "criteria": {
+    "has_dynamite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:dynamite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.dynamite.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:dynamite"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.dynamite.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_dynamite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

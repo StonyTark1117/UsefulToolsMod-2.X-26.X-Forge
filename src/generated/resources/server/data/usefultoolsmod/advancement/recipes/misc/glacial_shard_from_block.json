@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_glacial_shard_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:glacial_shard_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "usefultoolsmod:glacial_shard_from_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_glacial_shard_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "usefultoolsmod:glacial_shard_from_block"
+    ]
+  }
+}

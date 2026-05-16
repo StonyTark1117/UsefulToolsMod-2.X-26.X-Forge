@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:coal"
+  ],
+  "result": {
+    "count": 4,
+    "id": "usefultoolsmod:coal_dust"
+  }
+}

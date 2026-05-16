@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_obshard_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:obshard_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "usefultoolsmod:obshard_from_obshard_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_obshard_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "usefultoolsmod:obshard_from_obshard_block"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:pumpkin_pie" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:pumpkin_pie" }
+    ]
+  }
+}

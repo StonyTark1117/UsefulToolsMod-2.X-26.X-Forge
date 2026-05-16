@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:iron_ingot",
+    "B": "minecraft:gunpowder",
+    "C": "minecraft:redstone",
+    "D": "minecraft:paper"
+  },
+  "pattern": [
+    "ACA",
+    "ABA",
+    "ADA"
+  ],
+  "result": {
+    "id": "usefultoolsmod:grenade"
+  }
+}

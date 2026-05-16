@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "minecraft:cobbled_deepslate",
+    "B": "usefultoolsmod:rgold"
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "id": "usefultoolsmod:rgold_deepslate_ore"
+  }
+}

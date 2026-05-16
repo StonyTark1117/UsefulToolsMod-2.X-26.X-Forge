@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:golden_apple",
+    "B": "minecraft:stick"
+  },
+  "pattern": [
+    "AA ",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "id": "usefultoolsmod:golden_apple_hoe"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "usefultoolsmod:calcified_amethyst",
+    "B": "minecraft:stick"
+  },
+  "pattern": [
+    "AA ",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "id": "usefultoolsmod:camethyst_hoe"
+  }
+}

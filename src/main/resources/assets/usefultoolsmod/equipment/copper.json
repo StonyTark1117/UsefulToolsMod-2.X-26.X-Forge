@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:copper" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:copper" }
+    ]
+  }
+}

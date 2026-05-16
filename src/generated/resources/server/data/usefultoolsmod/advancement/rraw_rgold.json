@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_rraw_rgold_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rraw_rgold_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.rraw_rgold.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:rraw_rgold_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.rraw_rgold.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_rraw_rgold_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

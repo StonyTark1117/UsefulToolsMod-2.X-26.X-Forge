@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:magma_cream" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:magma_cream" }
+    ]
+  }
+}

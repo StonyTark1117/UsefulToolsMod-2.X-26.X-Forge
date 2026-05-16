@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:pquartz" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:pquartz" }
+    ]
+  }
+}

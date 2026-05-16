@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_obshard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:obshard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.obshard.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:obshard"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.obshard.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_obshard"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

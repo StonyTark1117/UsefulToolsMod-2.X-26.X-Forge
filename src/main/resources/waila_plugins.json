@@ -1,0 +1,10 @@
+{
+  "usefultoolsmod:plugin": {
+    "entrypoints": {
+      "common": "com.stonytark.usefultoolsmod.compat.wthit.UsefulToolsWthitPlugin",
+      "client": "com.stonytark.usefultoolsmod.compat.wthit.UsefulToolsWthitClientPlugin"
+    },
+    "side": "*",
+    "required": []
+  }
+}

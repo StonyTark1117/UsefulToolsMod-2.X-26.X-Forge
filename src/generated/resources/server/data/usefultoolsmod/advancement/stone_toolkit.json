@@ -1,0 +1,189 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_andesite_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:andesite_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_basalt_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:basalt_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_blackstone_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:blackstone_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_calcite_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:calcite_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_deepslate_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:deepslate_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_diorite_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:diorite_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_end_stone_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:end_stone_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_granite_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:granite_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_netherrack_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:netherrack_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sandstone_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:sandstone_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_smooth_basalt_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:smooth_basalt_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_terracotta_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:terracotta_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_tuff_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:tuff_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.stone_toolkit.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "usefultoolsmod:granite_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.stone_toolkit.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_andesite_pickaxe"
+    ],
+    [
+      "has_basalt_pickaxe"
+    ],
+    [
+      "has_blackstone_pickaxe"
+    ],
+    [
+      "has_calcite_pickaxe"
+    ],
+    [
+      "has_deepslate_pickaxe"
+    ],
+    [
+      "has_diorite_pickaxe"
+    ],
+    [
+      "has_end_stone_pickaxe"
+    ],
+    [
+      "has_granite_pickaxe"
+    ],
+    [
+      "has_netherrack_pickaxe"
+    ],
+    [
+      "has_sandstone_pickaxe"
+    ],
+    [
+      "has_smooth_basalt_pickaxe"
+    ],
+    [
+      "has_terracotta_pickaxe"
+    ],
+    [
+      "has_tuff_pickaxe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

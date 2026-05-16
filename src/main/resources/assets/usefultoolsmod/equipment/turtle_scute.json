@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:turtle_scute" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:turtle_scute" }
+    ]
+  }
+}

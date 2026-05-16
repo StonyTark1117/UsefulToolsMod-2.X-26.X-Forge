@@ -1,0 +1,85 @@
+{
+  "parent": "usefultoolsmod:rscrap",
+  "criteria": {
+    "has_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rscrap_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rscrap_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rscrap_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rscrap_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rscrap_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.rscrap_set.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "usefultoolsmod:rscrap_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.rscrap_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_sword"
+    ],
+    [
+      "has_pickaxe"
+    ],
+    [
+      "has_shovel"
+    ],
+    [
+      "has_axe"
+    ],
+    [
+      "has_hoe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

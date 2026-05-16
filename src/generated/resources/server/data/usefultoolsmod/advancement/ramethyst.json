@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_ramethyst_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:ramethyst_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.ramethyst.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:ramethyst_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.ramethyst.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_ramethyst_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

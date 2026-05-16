@@ -1,0 +1,72 @@
+# This is the Forge mods.toml file for Forge 26.1+
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+logoFile="grenade.png"
+authors="${mod_authors}"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/the-useful-tools-mod"
+issueTrackerURL="https://github.com/StonyTark1117/UsefulToolsMod-2.X-26.X-Forge/issues"
+description='''${mod_description}'''
+
+[[dependencies.${mod_id}]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+# Optional integration: JEI - no Forge 26.1.2 build published upstream as of 2026-05-15.
+# When mezz publishes jei-${minecraft_version}-forge, uncomment and bump the version range.
+# [[dependencies.${mod_id}]]
+#     modId="jei"
+#     type="optional"
+#     versionRange="[29.0.0,)"
+#     ordering="AFTER"
+#     side="CLIENT"
+
+# Optional integration: WTHIT - no Forge 26.1.2 build published upstream as of 2026-05-15.
+# [[dependencies.${mod_id}]]
+#     modId="waila"
+#     type="optional"
+#     versionRange="[19.0.0,)"
+#     ordering="AFTER"
+#     side="BOTH"
+
+# Optional integration: Cloth Config - last Forge build was 17.0.144 for MC 1.21.x.
+# [[dependencies.${mod_id}]]
+#     modId="cloth_config"
+#     type="optional"
+#     versionRange="[26.1.0,)"
+#     ordering="AFTER"
+#     side="CLIENT"
+
+# Optional integration: Just Enough Resources (JER). No 26.1 build on Modrinth yet.
+# [[dependencies.${mod_id}]]
+#     modId="jeresources"
+#     type="optional"
+#     versionRange="[${jer_mod_version},)"
+#     ordering="AFTER"
+#     side="CLIENT"
+
+# Optional integration: Magnetization addon. When loaded, this mod's metal
+# ingots, raw materials, ores, blocks, armor, and tools opt into the
+# magnetization:* item/block tags. Tag JSONs are emitted unconditionally and
+# are inert when Magnetization isn't installed.
+[[dependencies.${mod_id}]]
+    modId="magnetization"
+    type="optional"
+    versionRange="[0.1.0,)"
+    ordering="AFTER"
+    side="BOTH"

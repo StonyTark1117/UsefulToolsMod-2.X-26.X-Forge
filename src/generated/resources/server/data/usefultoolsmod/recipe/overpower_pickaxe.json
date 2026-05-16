@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "minecraft:diamond_block",
+    "B": "minecraft:stick",
+    "C": "usefultoolsmod:soblock",
+    "D": "usefultoolsmod:rgold",
+    "E": "usefultoolsmod:sem"
+  },
+  "pattern": [
+    "AAA",
+    "DBE",
+    "CB "
+  ],
+  "result": {
+    "id": "usefultoolsmod:overpower_pickaxe"
+  }
+}

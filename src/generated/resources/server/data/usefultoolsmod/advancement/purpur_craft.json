@@ -1,0 +1,120 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_item_0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:purpur_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:purpur_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_2": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:purpur_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_3": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:purpur_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_4": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:purpur_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_5": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:purpur_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_6": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:purpur_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_7": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:purpur_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_item_8": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:purpur_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.purpur_craft.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:purpur_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.purpur_craft.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_item_0",
+      "has_item_1",
+      "has_item_2",
+      "has_item_3",
+      "has_item_4",
+      "has_item_5",
+      "has_item_6",
+      "has_item_7",
+      "has_item_8"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

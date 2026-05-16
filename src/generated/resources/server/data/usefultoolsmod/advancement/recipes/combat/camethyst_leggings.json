@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_calcified_amethyst": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:calcified_amethyst"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "usefultoolsmod:camethyst_leggings"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_calcified_amethyst"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "usefultoolsmod:camethyst_leggings"
+    ]
+  }
+}

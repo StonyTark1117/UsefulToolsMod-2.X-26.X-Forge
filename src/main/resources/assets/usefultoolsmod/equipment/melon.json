@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:melon" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:melon" }
+    ]
+  }
+}

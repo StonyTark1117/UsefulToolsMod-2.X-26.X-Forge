@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "usefultoolsmod:calcified_amethyst_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "usefultoolsmod:calcified_amethyst"
+  }
+}

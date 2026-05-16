@@ -1,0 +1,67 @@
+{
+  "parent": "usefultoolsmod:sweet_berry_craft",
+  "criteria": {
+    "eat_tool_0": {
+      "conditions": {
+        "item": {
+          "items": "usefultoolsmod:sweet_berry_sword"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_tool_1": {
+      "conditions": {
+        "item": {
+          "items": "usefultoolsmod:sweet_berry_pickaxe"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_tool_2": {
+      "conditions": {
+        "item": {
+          "items": "usefultoolsmod:sweet_berry_axe"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_tool_3": {
+      "conditions": {
+        "item": {
+          "items": "usefultoolsmod:sweet_berry_shovel"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_tool_4": {
+      "conditions": {
+        "item": {
+          "items": "usefultoolsmod:sweet_berry_hoe"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.sweet_berry_eat.description"
+    },
+    "hidden": true,
+    "icon": {
+      "id": "minecraft:sweet_berries"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.sweet_berry_eat.title"
+    }
+  },
+  "requirements": [
+    [
+      "eat_tool_0",
+      "eat_tool_1",
+      "eat_tool_2",
+      "eat_tool_3",
+      "eat_tool_4"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

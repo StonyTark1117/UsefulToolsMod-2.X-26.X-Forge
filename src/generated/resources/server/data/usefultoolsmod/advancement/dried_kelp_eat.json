@@ -1,0 +1,67 @@
+{
+  "parent": "usefultoolsmod:dried_kelp_craft",
+  "criteria": {
+    "eat_tool_0": {
+      "conditions": {
+        "item": {
+          "items": "usefultoolsmod:dried_kelp_sword"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_tool_1": {
+      "conditions": {
+        "item": {
+          "items": "usefultoolsmod:dried_kelp_pickaxe"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_tool_2": {
+      "conditions": {
+        "item": {
+          "items": "usefultoolsmod:dried_kelp_axe"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_tool_3": {
+      "conditions": {
+        "item": {
+          "items": "usefultoolsmod:dried_kelp_shovel"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_tool_4": {
+      "conditions": {
+        "item": {
+          "items": "usefultoolsmod:dried_kelp_hoe"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.dried_kelp_eat.description"
+    },
+    "hidden": true,
+    "icon": {
+      "id": "minecraft:dried_kelp"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.dried_kelp_eat.title"
+    }
+  },
+  "requirements": [
+    [
+      "eat_tool_0",
+      "eat_tool_1",
+      "eat_tool_2",
+      "eat_tool_3",
+      "eat_tool_4"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

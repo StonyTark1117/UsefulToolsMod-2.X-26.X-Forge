@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:dried_kelp" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:dried_kelp" }
+    ]
+  }
+}

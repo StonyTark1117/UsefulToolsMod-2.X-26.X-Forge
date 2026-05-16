@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:hglow" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:hglow" }
+    ]
+  }
+}

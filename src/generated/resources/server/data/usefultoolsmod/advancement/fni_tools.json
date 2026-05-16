@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:rflint",
+  "criteria": {
+    "has_fni_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:fni_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.fni_tools.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:fni_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.fni_tools.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_fni_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

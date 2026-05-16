@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_calcified_amethyst": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:calcified_amethyst"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.calcified_amethyst.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:calcified_amethyst"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.calcified_amethyst.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_calcified_amethyst"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

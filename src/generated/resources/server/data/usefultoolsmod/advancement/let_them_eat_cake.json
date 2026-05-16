@@ -1,0 +1,76 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_cake_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:cake_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cake_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:cake_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cake_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:cake_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cake_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:cake_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cake_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:cake_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.let_them_eat_cake.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:cake_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.let_them_eat_cake.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cake_sword",
+      "has_cake_pickaxe",
+      "has_cake_axe",
+      "has_cake_shovel",
+      "has_cake_hoe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

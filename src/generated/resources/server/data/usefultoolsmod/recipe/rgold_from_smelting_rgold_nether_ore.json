@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "group": "rgold",
+  "ingredient": "usefultoolsmod:rgold_nether_ore",
+  "result": {
+    "id": "usefultoolsmod:rgold"
+  }
+}

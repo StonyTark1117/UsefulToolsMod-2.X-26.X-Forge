@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:obingot",
+  "criteria": {
+    "has_robsidian_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:robsidian_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.robsidian.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:robsidian_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.robsidian.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_robsidian_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

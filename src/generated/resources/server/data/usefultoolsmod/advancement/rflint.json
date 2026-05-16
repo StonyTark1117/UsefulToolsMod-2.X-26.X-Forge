@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_rflint_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rflint_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.rflint.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:rflint_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.rflint.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_rflint_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

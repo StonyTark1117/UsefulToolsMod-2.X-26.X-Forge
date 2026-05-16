@@ -1,0 +1,27 @@
+{
+  "parent": "usefultoolsmod:ghost_encounter",
+  "criteria": {
+    "ghost_nearby_again": {
+      "trigger": "usefultoolsmod:ghost_nearby"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.ghost_companion.description"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "id": "usefultoolsmod:ghost_spawn_egg"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.ghost_companion.title"
+    }
+  },
+  "requirements": [
+    [
+      "ghost_nearby_again"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

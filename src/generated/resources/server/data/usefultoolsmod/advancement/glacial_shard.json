@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_glacial_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:glacial_shard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.glacial_shard.description"
+    },
+    "icon": {
+      "id": "usefultoolsmod:glacial_shard"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.glacial_shard.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_glacial_shard"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "usefultoolsmod:shulker" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "usefultoolsmod:shulker" }
+    ]
+  }
+}
