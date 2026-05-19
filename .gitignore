@@ -29,6 +29,8 @@ gradle-app.setting
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
-# IntelliJ IDEA — project-local IDE state, not part of the mod source.
-.idea/
+# IntelliJ IDEA — ignore per-user state, but keep shared run configs / code style.
+.idea/*
+!.idea/runConfigurations/
+!.idea/codeStyles/
 *.iml
