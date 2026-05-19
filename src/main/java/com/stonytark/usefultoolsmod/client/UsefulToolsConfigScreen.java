@@ -65,7 +65,7 @@ public class UsefulToolsConfigScreen extends Screen {
                 LIST_TOP_INSET,
                 ITEM_HEIGHT);
         populate(this.list);
-        this.addWidget(this.list);
+        this.addRenderableWidget(this.list);
 
         int btnW = 100;
         int btnY = this.height - 27;

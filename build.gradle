@@ -94,6 +94,27 @@ minecraft {
     }
 }
 
+// Wayland workaround for runClient. Mojang's GLX#_initGlfw calls
+// glfwGetWindowPos, which Wayland refuses (error 0x1000C, "The platform does
+// not provide the window position") — the client crashes on init under
+// Wayland-native GLFW. GLFW 3.4 has no env var to pick the X11 backend
+// (GLFW_PLATFORM is an init-hint only). The reliable fix is to remove
+// WAYLAND_DISPLAY from the JVM environment so GLFW can't find the Wayland
+// socket and falls back to X11 via XWayland.
+//
+// Setting it in the `runs { register('client') { environment ... } }` block
+// above doesn't work: ForgeGradle routes that into the slime-launcher options
+// struct, but slime-launcher runs in-process and never reads from it. The
+// JavaExec the Gradle task actually forks inherits the daemon's env — so we
+// have to scrub the env on the JavaExec itself.
+afterEvaluate {
+    tasks.named('runClient', JavaExec).configure {
+        doFirst {
+            environment.remove('WAYLAND_DISPLAY')
+        }
+    }
+}
+
 repositories {
     minecraft.mavenizer(it)
     maven fg.forgeMaven
