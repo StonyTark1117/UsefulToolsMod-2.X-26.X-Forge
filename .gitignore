@@ -28,3 +28,7 @@ gradle-app.setting
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+# IntelliJ IDEA — project-local IDE state, not part of the mod source.
+.idea/
+*.iml
