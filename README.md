@@ -54,6 +54,29 @@ integration code is still in `src/main/java/...compat/` — un-comment the
 matching block in `gradle.properties` + `build.gradle` + `mods.toml` to wire
 it back up.
 
+## Running on Linux (Wayland)
+
+Forge 26.1.2 inherits a vanilla Mojang crash on Wayland: `GLX._initGlfw`
+calls `glfwGetWindowPos`, which Wayland refuses with GLFW error `0x1000C`
+("The platform does not provide the window position"). This affects **any**
+client launch on a Wayland session, modded or not — Minecraft dies before
+mods load. GLFW 3.4 has no env var to force the X11 backend, so the
+workaround is to unset `WAYLAND_DISPLAY` so GLFW falls through to X11 via
+XWayland.
+
+- **Prism Launcher** — Edit Instance → Settings → enable *Custom commands*,
+  set **Wrapper command** to `env -u WAYLAND_DISPLAY`. (Alternative: enable
+  the *Environment variables* override and add `WAYLAND_DISPLAY=` with an
+  empty value.)
+- **Other launchers** — launch the launcher itself with
+  `WAYLAND_DISPLAY= ./your-launcher`, or unset the variable in the launch
+  script.
+- **Dev runtime (`./gradlew runClient`)** — already handled in
+  `build.gradle`; the run task scrubs `WAYLAND_DISPLAY` off the JavaExec
+  environment before launch.
+
+X11 sessions and non-Linux platforms are unaffected.
+
 ## Building
 
 ```bash

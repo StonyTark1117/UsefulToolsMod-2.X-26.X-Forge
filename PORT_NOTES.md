@@ -311,6 +311,22 @@ provider-by-provider delta.)
   hosts `commonSetup()` and `addCreative()` registered that way, so the
   checker is off in dev.
 
+### Wayland crash on end-user launchers
+
+The `runClient` Wayland scrub in `build.gradle` (`environment.remove
+('WAYLAND_DISPLAY')`) only covers the Gradle-forked dev client. Players
+running the built jar through Prism / MultiMC / vanilla launcher on a
+Wayland session hit the same `GLFW 0x1000C` crash — `Minecraft.<init>` →
+`RenderSystem.initBackendSystem` → `GLX._initGlfw` dies before any mod
+code loads (mod list comes back as `ERR` in the crash report because
+ModList init was never reached). It's a vanilla Mojang bug, not
+fixable from mod code.
+
+User-side workaround documented in `README.md` (Running on Linux
+(Wayland) section): unset `WAYLAND_DISPLAY` in the launcher's wrapper
+command or environment override. Same root cause as the dev-runtime
+fix.
+
 ## What was already done in the NeoForge port and didn't need re-doing
 
 All of the 1.21.1 → 26.1 vanilla-MC API migrations carry over unchanged —
